@@ -22,7 +22,7 @@ sends telegram notification
 
 <# 
 Tested Linux. Log file goes correctly into /tmp and pulls errors and gives drive percentage free
-Need to test Windows
+Tested in a Windows Enviroment
 #>
 
 param (
