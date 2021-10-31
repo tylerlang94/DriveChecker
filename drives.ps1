@@ -1,30 +1,4 @@
- <#Things to work on
-    *Email Support
-    *Remembering past preferences for automationf
-#>
-
-<#
-We want to be notified when a drive in our home network is running low on space
-The script will check the desired drive for free space
-and send a telegram notification if it is below 20%.
-All actions should be logged. 
-The script should support linux and windows
-The script should support scanning a drive the user specifies.
-#>
-
-<#
-Supports logging
-checks desired drive for free space
-lets user specify drive
-supports both windows and linux
-sends telegram notification
-#>
-
-<# 
-Tested Linux. Log file goes correctly into /tmp and pulls errors and gives drive percentage free
-Tested in a Windows Enviroment
-#>
-
+#Parameters
 param (
     [Parameter(Mandatory = $true)]
     [string]
