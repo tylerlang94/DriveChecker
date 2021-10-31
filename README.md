@@ -4,6 +4,6 @@ This is a powershell tool that can go through the specified drive and tell the d
 
 #### Features
 
--Compatible in both Linux and Windows Enviroments. 
--Creates a logfile if one doesn't exist. 
--Puts log updates in the log file so you know what happened. 
+-[Compatible in both Linux and Windows Enviroments.]
+-[Creates a logfile if one doesn't exist. ]
+-[Puts log updates in the log file so you know what happened. ]
