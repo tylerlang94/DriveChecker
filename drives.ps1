@@ -1,9 +1,10 @@
 #Parameters
+
 param (
     [Parameter(Mandatory = $true)]
-    [string]
     $drive
 )
+
 
 # log directory
 
@@ -30,15 +31,6 @@ catch {
 
 Add-Content -Path $logFile -Value "[INFO] Running $PSCommandPath"
 
-#verify poshgram is installed
-
-if(-not (Get-Module -Name PoshGram -ListAvailable)) {
-    Add-Content -Path $logFile -Value "[ERROR] PoshGram is not installed."
-    throw
-}
-else {
-    Add-Content -Path $logFile -Value "[INFO] PoshGram is installed."
-}
 
 # get hdd info
 try {
@@ -94,25 +86,4 @@ if ($percentFree -le 20) {
     }
     Add-Content -Path $logFile -Value "[INFO] Sending Telegram Notification"
 }
-<# Need to look up how to get this set up with email and not TeleGram
-   Not wanting to use Telegram currently
-$botToken =
-$chat = 
-
-$sendTelegramTextMessageSplat = @{
-    BotToken  = $botToken
-    ChatID    = $chat
-    Message   = '[LOW SPACE] Drive at $percentfree%'
-    ErrorAction = 'Stop'
-}
-try {
-    Send-TelegramTextMessage @sendTelegramTextMessageSplat
-    Add-Content -Path $logFile -Value "[INFO] Message sent successfully"
-}
-catch {
-    Add-Content -Path $logFile -Value "[ERROR] Error encountered sendign message"
-    Add-Content -Path $logFile -Value $_
-    throw
-}
-#>
 
