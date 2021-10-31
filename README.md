@@ -1,4 +1,4 @@
-#Drive Checker
+Drive Checker
 
 This is a powershell tool that can go through the specified drive and tell the drive space left. If the space left is less than 20%, you will get an alert. 
 
