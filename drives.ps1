@@ -74,16 +74,3 @@ catch {
 }
 $logFile = "$logPath\driveCheck.log" #logFile
 
-# send telegram message
-if ($percentFree -le 20) {
-    try {
-        Import-Module -Name PoshGram -ErrorAction Stop
-        Add-Content -Path $logFile -Value "[INFO] Imported PoshGram successfully"
-    }
-    catch {
-        Add-Content -Path $logFile -Value "[ERROR] PoshGram could not be imported"
-        Add-Content -Path $logFile -Value $_
-    }
-    Add-Content -Path $logFile -Value "[INFO] Sending Telegram Notification"
-}
-
