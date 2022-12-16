@@ -6,8 +6,6 @@ param (
 )
 
 
-# log directory
-
 if ($PSVersionTable.Platform -eq 'Unix') {
     $logPath = '/tmp'
 }
@@ -16,11 +14,9 @@ else {
 }
 $logFile = "$logPath\driveCheck.log" #logFile
 
-#verify if the log directory exists
-
 try {
     if(-not (Test-Path -Path $logPath -ErrorAction Stop)) {
-        # output dir is not found. Create the dir
+
         New-Item -ItemType directory -Path $logPath -ErrorAction Stop | Out-Null
         New-Item -ItemType directory -Path $logFile -ErrorAction Stop | Out-Null
     }
@@ -31,15 +27,10 @@ catch {
 
 Add-Content -Path $logFile -Value "[INFO] Running $PSCommandPath"
 
-
-# get hdd info
 try {
     if ($PSVersionTable.Platform -eq 'Unix') {
-        #Linux
-        #used
-        #free
         $volume = Get-PSDrive -Name $Drive -ErrorAction Stop
-        #verify volume exists
+        
         if ($volume) {
             $total = $volume.Used + $volume.free
             $percentFree = [int](($volume.free / $total) * 100)
@@ -52,7 +43,7 @@ try {
         }
     }
     else {
-        #Windows
+
         $volume = Get-Volume -ErrorAction | Where-Object {$_.DriveLetter -eq $drive}
         if ($volume) {
             $total = $volume.size
